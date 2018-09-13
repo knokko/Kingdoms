@@ -132,7 +132,7 @@ public class GriefLogger implements Listener {
 	}
 	
 	public void save(){
-		new File(plug.getDataFolder().getAbsolutePath() + File.separator + FOLDER).mkdir();
+		new File(plug.getDataFolder().getAbsolutePath() + File.separator + FOLDER).mkdirs();
 		Iterator<Entry<String, BlockLog>> iterator = blockLogs.entrySet().iterator();
 		while(iterator.hasNext()){
 			Entry<String,BlockLog> entry = iterator.next();
@@ -275,8 +275,7 @@ public class GriefLogger implements Listener {
 				input.close();
 				return data;
 			} catch(Exception ex){
-				Bukkit.getLogger().warning("Couldn't load previous block logger data about " + kdName);
-				Bukkit.getLogger().warning("This is ok if the kingdom is new.");
+				Bukkit.getLogger().warning("No previous block log could be found for " + kdName + ": " + ex.getMessage());
 				return null;
 			}
 		}
@@ -352,8 +351,7 @@ public class GriefLogger implements Listener {
 		private void save(KingdomsPlugin plugin, String kdName){
 			try {
 				byte[] previousData = loadBytes(plugin, kdName);
-				File file = new File(getAbsolutePath(plugin, kdName));
-				FileOutputStream output = new FileOutputStream(file);
+				FileOutputStream output = new FileOutputStream(getAbsolutePath(plugin, kdName));
 				if(previousData != null)
 					output.write(previousData);
 				for(byte[] data : bytes)
@@ -367,9 +365,7 @@ public class GriefLogger implements Listener {
 		private void saveToText(KingdomsPlugin plugin, Kingdom kd, boolean ignoreOwnMembers){
 			String[] lines = produceLines(plugin, kd, ignoreOwnMembers);
 			try {
-				File file = new File(getTextPath(plugin, kd.getName()));
-				file.getParentFile().mkdirs();
-				PrintWriter writer = new PrintWriter(file);
+				PrintWriter writer = new PrintWriter(getTextPath(plugin, kd.getName()));
 				for(String line : lines)
 					if(line != null)
 						writer.println(line);
@@ -437,8 +433,7 @@ public class GriefLogger implements Listener {
 				input.close();
 				return data;
 			} catch(Exception ex){
-				Bukkit.getLogger().warning("Couldn't load previous entity logger data about " + kdName);
-				Bukkit.getLogger().warning("This is ok if the kingdom is new.");
+				Bukkit.getLogger().warning("No previous entity log could be found for " + kdName + ": " + ex.getMessage());
 				return null;
 			}
 		}
@@ -510,8 +505,7 @@ public class GriefLogger implements Listener {
 		private void save(KingdomsPlugin plugin, String kdName){
 			try {
 				byte[] previousData = loadBytes(plugin, kdName);
-				File file = new File(getAbsolutePath(plugin, kdName));
-				FileOutputStream output = new FileOutputStream(file);
+				FileOutputStream output = new FileOutputStream(getAbsolutePath(plugin, kdName));
 				if(previousData != null)
 					output.write(previousData);
 				for(byte[] data : bytes)
@@ -525,9 +519,7 @@ public class GriefLogger implements Listener {
 		private void saveToText(KingdomsPlugin plugin, Kingdom kd, boolean ignoreOwnMembers){
 			String[] lines = produceBookLines(plugin, kd, ignoreOwnMembers);
 			try {
-				File file = new File(getTextPath(plugin, kd.getName()));
-				file.getParentFile().mkdirs();
-				PrintWriter writer = new PrintWriter(file);
+				PrintWriter writer = new PrintWriter(getTextPath(plugin, kd.getName()));
 				for(String line : lines)
 					if(line != null)
 						writer.println(line);

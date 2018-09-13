@@ -353,6 +353,7 @@ public class Kingdom {
 	}
 	
 	public boolean invite(String name){
+		@SuppressWarnings("deprecation")
 		Player player = Bukkit.getPlayer(name);
 		if(player != null)
 			return invite(player);
@@ -458,7 +459,6 @@ public class Kingdom {
 	}
 	
 	public void save(String path) throws IOException {
-		new File(path).mkdirs();
 		save12C(path);
 	}
 	

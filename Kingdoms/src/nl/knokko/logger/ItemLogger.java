@@ -248,8 +248,7 @@ public class ItemLogger implements Listener {
 				input.close();
 				return data;
 			} catch(Exception ex){
-				Bukkit.getLogger().warning("Couldn't load previous item logger data about " + playerID);
-				Bukkit.getLogger().warning("This is ok if the player is new.");
+				Bukkit.getLogger().warning("No previous block entity could be found for " + playerID + ": " + ex.getMessage());
 				return null;
 			}
 		}
@@ -328,8 +327,7 @@ public class ItemLogger implements Listener {
 		private void save(KingdomsPlugin plugin, UUID playerID){
 			try {
 				byte[] previousData = loadBytes(plugin, playerID);
-				File file = new File(getPath(plugin, playerID));
-				FileOutputStream output = new FileOutputStream(file);
+				FileOutputStream output = new FileOutputStream(getPath(plugin, playerID));
 				if(previousData != null)
 					output.write(previousData);
 				for(byte[] action : currentData)
@@ -343,9 +341,7 @@ public class ItemLogger implements Listener {
 		private void saveToTextFile(KingdomsPlugin plugin, UUID playerID){
 			byte[][] previous = loadByteList(plugin, playerID);
 			try {
-				File file = new File(getTextPath(plugin, playerID));
-				file.getParentFile().mkdirs();
-				PrintWriter writer = new PrintWriter(file);
+				PrintWriter writer = new PrintWriter(getTextPath(plugin, playerID));
 				if(previous != null){
 					for(byte[] data : previous)
 						writer.println(toTextLine(data, playerID));

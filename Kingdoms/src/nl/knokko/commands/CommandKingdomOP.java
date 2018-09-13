@@ -352,6 +352,7 @@ public class CommandKingdomOP implements CommandExecutor {
 					Translator.kingdomAlreadyExists(sender, kdName);
 					return true;
 				}
+				@SuppressWarnings("deprecation")
 				Player king = Bukkit.getPlayer(kingName);
 				if(king == null){
 					Translator.playerNotOnline(sender, kingName);

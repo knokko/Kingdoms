@@ -94,7 +94,7 @@ public class KingdomsPlugin extends JavaPlugin {
 	}
 	
 	public boolean save(){
-		getDataFolder().mkdirs();
+		getDataFolder().mkdir();
 		boolean succes = true;
 		if(!kingdoms.save(getDataFolder().getAbsolutePath()))
 			succes = false;

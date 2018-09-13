@@ -1,6 +1,6 @@
 name: Kingdoms
 main: nl.knokko.main.KingdomsPlugin
-version: 1.11.2-1.2 Core
+version: 1.2 Core
 commands:
   kingdom:
     description: The kingdom command.

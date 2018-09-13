@@ -53,6 +53,7 @@ public final class Kingdoms {
 	}
 	
 	public OfflinePlayer getPlayerByName(String name){
+		@SuppressWarnings("deprecation")
 		Player player = Bukkit.getPlayer(name);
 		if(player != null)
 			return player;

@@ -25,6 +25,7 @@ private final KingdomsPlugin plugin;
 				return true;
 			}
 			String name = args[0];
+			@SuppressWarnings("deprecation")
 			Player player = Bukkit.getPlayer(name);
 			String title = args[1];
 			ChatColor color = ChatColor.valueOf(args[2].toUpperCase());

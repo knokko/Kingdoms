@@ -34,7 +34,6 @@ public class Settings {
 	}
 	
 	public boolean save(String path){
-		new File(path).mkdirs();
 		return save11C(path);
 	}
 	

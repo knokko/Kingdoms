@@ -3,11 +3,11 @@ package nl.knokko.utils;
 import java.io.FileInputStream;
 import java.nio.ByteBuffer;
 
-import net.minecraft.server.v1_11_R1.Items;
-import net.minecraft.server.v1_11_R1.NBTTagList;
-import net.minecraft.server.v1_11_R1.NBTTagString;
+import net.minecraft.server.v1_12_R1.Items;
+import net.minecraft.server.v1_12_R1.NBTTagList;
+import net.minecraft.server.v1_12_R1.NBTTagString;
 
-import org.bukkit.craftbukkit.v1_11_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -44,8 +44,8 @@ public class Book {
 	}
 	
 	public Book(ItemStack item){
-		net.minecraft.server.v1_11_R1.ItemStack nmsItemStack = CraftItemStack.asNMSCopy(item);
-		net.minecraft.server.v1_11_R1.NBTTagCompound nbttc = nmsItemStack.getTag();
+		net.minecraft.server.v1_12_R1.ItemStack nmsItemStack = CraftItemStack.asNMSCopy(item);
+		net.minecraft.server.v1_12_R1.NBTTagCompound nbttc = nmsItemStack.getTag();
 		title = nbttc.getString("title");
 		author = nbttc.getString("author");
 		NBTTagList list = nbttc.getList("pages", 8);
@@ -68,8 +68,8 @@ public class Book {
 	
 	public ItemStack toItemStack(){
 		CraftItemStack is = CraftItemStack.asNewCraftStack(Items.WRITTEN_BOOK);
-		net.minecraft.server.v1_11_R1.ItemStack nmsItemStack = CraftItemStack.asNMSCopy(is);
-		net.minecraft.server.v1_11_R1.NBTTagCompound nbttc = new net.minecraft.server.v1_11_R1.NBTTagCompound();
+		net.minecraft.server.v1_12_R1.ItemStack nmsItemStack = CraftItemStack.asNMSCopy(is);
+		net.minecraft.server.v1_12_R1.NBTTagCompound nbttc = new net.minecraft.server.v1_12_R1.NBTTagCompound();
 		nbttc.setString("title", title);
 		nbttc.setString("author", author);
 		NBTTagList nbttaglist = new NBTTagList();
