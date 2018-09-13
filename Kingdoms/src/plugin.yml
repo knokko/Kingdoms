@@ -1,0 +1,28 @@
+name: Kingdoms
+main: nl.knokko.main.KingdomsPlugin
+version: 1.11.2-1.2 Core
+commands:
+  kingdom:
+    description: The kingdom command.
+    useage: /kd (s(pawn)/here/info/announcements/kingtitle/promote/permissions)
+    aliases: [kd, kr, k]
+  kingdomop:
+    description: The kingdom command for staff.
+    useage: /kdop (help/save/load/create/info/announcements/kingtitle/permissions/promote)
+    aliases: [kdop, kop]
+  title:
+    description: Grant a title to a staff member.
+    useage: /title [player] [title name] [title color]
+    aliases: [rank]
+  grieflogger:
+    description: Access the data that has been collected by the grief logger
+    useage: /gl kingdom [kd name] [log actions of members] or /gl player [player name] [log actions in own kingdom] or /gl save
+    aliases: [gl,grief,griefl]
+  itemlogger:
+    description: Access the data that has been collected by the item logger
+    useage: /il player [player name] or /il kingdom [kingdom name] or /il save
+    aliases: [il, iteml]
+  book:
+    description: Adds a book and quil to your inventory.
+    useage: /book
+    aliases: [bookandquil,book_and_quil,baq]
